@@ -48,7 +48,13 @@ def images(filename):
 def fonts(filename):
     return static_file(filename, root='static/fonts')
 
-@route('/login')#@get('/login')
+'''
+@route('/')
+def index():
+    return template('index')
+'''
+
+@route('/')#@get('/login')
 def login():
     return template('login')
 
@@ -57,7 +63,7 @@ def checkLogin(username, password):
 
     return True if username in d.keys() and d[username] == password else False
 
-@route('/login', method='POST') #@post('/login')
+@route('/', method='POST') #@post('/login')
 def acaoLogin():
     username=request.forms.get('username')
     password=request.forms.get('password')
@@ -69,4 +75,8 @@ def error404(error):
     return template('pagina404')
     
 if __name__ == '__main__':
-    run(host='localhost', port=8080, debug=True, reloader=True)
+    if os.environ.get('APP_LOCATION') == 'heroku':
+        run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
+    else:
+        run(host='localhost', port=8080, debug=True, reloader=True)
+        
