@@ -3,7 +3,11 @@
     lista de usuários do sistema
 </div>
 <ul class=list-group" style="width: 80%">
-    % for usuario in usuarios:
-        <li class="list-group-item">{{ usuario.username }}</li>
+    % if acesso:
+        % for usuario in usuarios:
+            <li class="list-group-item">{{ usuario.username }}</li>
+        % end
+    % else:
+        <center><p style="color:red"><strong>Acesso Negado!</strong></center>
     % end
 </ul>

@@ -10,3 +10,6 @@
     <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Login</button>
 </form><!-- /form -->
 <p><a href="cadastro">Clique aqui</a> para fazer o cadastro</p>
+% if not sucesso:
+    <p style="color:red">Usuário e/ou senha incorretos!</p>
+% end
