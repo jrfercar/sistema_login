@@ -1,0 +1,9 @@
+% rebase('base.html', title='Lista de usuários')
+<div class="panel-heading">
+    lista de usuários do sistema
+</div>
+<ul class=list-group" style="width: 80%">
+    % for usuario in usuarios:
+        <li class="list-group-item">{{ usuario.username }}</li>
+    % end
+</ul>
